@@ -1,0 +1,40 @@
+﻿@using Microsoft.AspNetCore.Http
+@model Assignment2.Models.BlogPost
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "Add Blog";
+}
+
+<div class="container">
+    <form asp-controller="Home" asp-action="AddBlog">
+        <div class="form-group">
+            <label for="text">Title: </label>
+            <input class="form-control" asp-for="Title" type="text" placeholder="Title" />
+        </div>
+        <div class="form-group">
+            <label for="text">Short Description: </label>
+            <input class="form-control" asp-for="ShortDescription" type="text" placeholder="Short Description" />
+        </div>
+        <div class="form-group">
+            <label for="text">Content: </label>
+            <textarea class="form-control" asp-for="Content" typeof="text" data-length="5000"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="date">Posted: </label>
+            <input class="form-control" asp-for="Posted" typeof="date" />
+        </div>
+        <div class="form-group">
+            <label for="checkbox">Is Available: </label>
+            <input asp-for="IsAvailable" typeof="checkbox" />
+        </div>
+
+        <div class="form-group">
+            <button class="form-control" type="submit">Add Blog</button>
+        </div>
+    </form>
+
+
+</div>

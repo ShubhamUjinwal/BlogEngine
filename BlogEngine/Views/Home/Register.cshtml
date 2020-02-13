@@ -1,0 +1,62 @@
+﻿@model Assignment2.Models.User
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "Blog Register";
+}
+<h2>Register</h2>
+<form asp-controller="Home" asp-action="RegisterUser">
+
+    <div class="form-group">
+        <label align="left">First Name: </label>
+        <input asp-for="FirstName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label align="left">Last Name: </label>
+        <input asp-for="LastName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label align="left">Email: </label>
+        <input asp-for="EmailAddress" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label align="left">Password: </label>
+        <input asp-for="Password" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label align="left">Country: </label>
+        <input asp-for="Country" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label align="left">Postal Code: </label>
+        <input asp-for="PostalCode" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label align="left">Address: </label>
+        <input asp-for="Address" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label align="left">City: </label>
+        <input asp-for="City" class="form-control"  />
+    </div>
+    <div class="form-group">
+        <label align="left">Date Of Birth: </label>
+        <input asp-for="DateOfBirth" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Role: </label>
+            <select class="form-control" asp-for="RoleId">
+                <option value=1 selected>General User</option>
+                <option value=2>Admin</option>
+            </select>      
+    </div>
+
+    <br />
+    <br />
+    <div class="form-group">
+        <button class="form-control" type="submit">Register</button> 
+    </div>
+    
+</form>

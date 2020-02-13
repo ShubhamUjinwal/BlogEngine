@@ -1,0 +1,70 @@
+﻿@using Microsoft.AspNetCore.Http
+@model Assignment2.Models.BlogPost
+
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "Edit Blog";
+}
+
+<div class="container">
+    <form asp-controller="Home" asp-action="EditBlog">
+        <input type="hidden" value="@Model.BlogPostId" name="BlogPostId" />
+
+        <div class="form-group">
+            <label for="text">Title: </label>
+            <input asp-for="Title" class="form-control" type="text" placeholder="Title" />
+        </div>
+        <div class="form-group">
+            <label for="text">Short Description: </label>
+            <input class="form-control" asp-for="ShortDescription" type="text" placeholder="Short Description" />
+        </div>
+        <div class="form-group">
+            <label for="text">Content: </label>
+            <textarea rows="15" asp-for="Content" class="form-control" typeof="text" data-length="5000"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="date">Posted: </label>
+            <input class="form-control" asp-for="Posted" typeof="date" />
+        </div>
+        <div class="form-group">
+            <label for="checkbox">Is Available: </label>
+            <input asp-for="IsAvailable" typeof="checkbox" />
+        </div>
+
+        <div class="form-group">
+            <button class="form-control" type="submit">Edit Blog</button>
+        </div>
+
+
+    </form>
+
+    <br /><br />
+    <div class="form-group">
+        <h3>Add Image</h3>
+        <form asp-controller="Home" asp-action="UploadImage" enctype="multipart/form-data">
+            <br />
+            <input type="file" name="files" />
+            <br />
+            <button class="btn btn-large btn-success" name="upload">Add Picture</button>
+            <br /><br />
+        </form>
+    </div>
+
+        @{
+            foreach (var item in (IEnumerable<Assignment2.Models.Photo>)ViewData["photos"])
+            {
+                <div class="col-md-8">
+                    <div class="thumbnail">
+                        <a href="@item.Url" target="_blank">
+                            <img src="@item.Url" alt="Lights" style="width:400px; text-align:center;">                           
+                            <div class="caption">
+                                @item.FileName.Split('.')[0]
+                            </div>
+                            <a asp-controller="Home" asp-action="DeletePhoto" onclick="return confirm('Are you sure you wante to delete this image?');" asp-route-id="@item.PhotoId">Delete</a>
+                        </a>
+                    </div>
+                </div>
+            }
+        }
+
+    </div>
